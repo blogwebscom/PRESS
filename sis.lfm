@@ -1,0 +1,132 @@
+object f_sis: Tf_sis
+  Left = 335
+  Height = 545
+  Top = 205
+  Width = 745
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Opciones y Herramientas del Sistema'
+  ClientHeight = 545
+  ClientWidth = 745
+  Position = poMainFormCenter
+  LCLVersion = '2.2.6.0'
+  object Shape4: TShape
+    Left = 16
+    Height = 97
+    Top = 28
+    Width = 376
+  end
+  object b_bk: TButton
+    Left = 304
+    Height = 33
+    Hint = 'Realiza una copia de seguridad de la Base de Datos'
+    Top = 44
+    Width = 80
+    Caption = 'Backup'
+    OnClick = b_bkClick
+    TabOrder = 0
+  end
+  object Label3: TLabel
+    Left = 24
+    Height = 17
+    Top = 44
+    Width = 243
+    Caption = 'Realiza una Copia de seguridad de la BD'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object bkok: TLabel
+    Left = 280
+    Height = 17
+    Top = 44
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object b_re: TButton
+    Left = 304
+    Height = 33
+    Top = 84
+    Width = 80
+    Caption = 'Restaurar'
+    OnClick = b_reClick
+    TabOrder = 1
+  end
+  object Label4: TLabel
+    Left = 24
+    Height = 17
+    Top = 84
+    Width = 219
+    Caption = 'Restaurar la BD a una copia anterior'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object reok: TLabel
+    Left = 280
+    Height = 17
+    Top = 84
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 17
+    Top = 8
+    Width = 250
+    Caption = 'NO realice ninguna acción si no está seguro!'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object sqll3: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    AlwaysUseBigint = False
+    Left = 456
+    Top = 36
+  end
+  object SelBK: TOpenDialog
+    Title = 'Seleccione una Copia de Seguridad:'
+    Filter = 'Copia de Seguridad|*.db'
+    Options = [ofEnableSizing]
+    Left = 408
+    Top = 36
+  end
+end

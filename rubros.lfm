@@ -1,0 +1,216 @@
+object f_rub: Tf_rub
+  Left = 411
+  Height = 505
+  Top = 159
+  Width = 513
+  BorderIcons = [biSystemMenu]
+  Caption = 'RUBROS'
+  ClientHeight = 505
+  ClientWidth = 513
+  OnActivate = FormActivate
+  Position = poMainFormCenter
+  LCLVersion = '2.2.6.0'
+  object lista: TDBGrid
+    Left = 16
+    Height = 326
+    Top = 32
+    Width = 480
+    AlternateColor = 16381168
+    Color = clWindow
+    Columns = <    
+      item
+        Alignment = taRightJustify
+        Title.Alignment = taCenter
+        Title.Caption = 'COD.'
+        Width = 70
+        FieldName = 'id_rub'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'NOMBRE'
+        Width = 370
+        FieldName = 'rnom'
+      end>
+    DataSource = dlista
+    Flat = True
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    Scrollbars = ssAutoVertical
+    TabOrder = 0
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Height = -13
+    TitleFont.Name = 'Segoe UI Semibold'
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    TitleFont.Style = [fsBold]
+    OnCellClick = listaCellClick
+  end
+  object b_nvo: TBitBtn
+    Left = 16
+    Height = 40
+    Top = 432
+    Width = 96
+    Caption = 'Nuevo'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_32
+    ImageIndex = 1
+    OnClick = b_nvoClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object b_mod: TBitBtn
+    Left = 112
+    Height = 40
+    Top = 432
+    Width = 96
+    Caption = 'Editar'
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_32
+    ImageIndex = 2
+    OnClick = b_modClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object b_del: TBitBtn
+    Left = 208
+    Height = 40
+    Top = 432
+    Width = 96
+    Caption = 'Borrar'
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_32
+    ImageIndex = 3
+    OnClick = b_delClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object b_save: TBitBtn
+    Left = 304
+    Height = 40
+    Top = 432
+    Width = 96
+    Caption = 'Guardar'
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_24
+    ImageIndex = 25
+    OnClick = b_saveClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object b_imp: TBitBtn
+    Left = 400
+    Height = 40
+    Top = 432
+    Width = 96
+    Caption = 'Imprimir'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_24
+    ImageIndex = 7
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 17
+    Top = 8
+    Width = 72
+    Caption = 'CARGADOS:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object pcan: TLabel
+    Left = 96
+    Height = 17
+    Top = 8
+    Width = 7
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object rnom: TLabeledEdit
+    Left = 16
+    Height = 28
+    Top = 392
+    Width = 480
+    EditLabel.Height = 17
+    EditLabel.Width = 480
+    EditLabel.Caption = 'Nombre del Rubro'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object dlista: TDataSource
+    DataSet = qlista
+    Left = 200
+    Top = 100
+  end
+  object qlista: TZQuery
+    Connection = f_main.conex
+    SQL.Strings = (
+      'SELECT * FROM RUBROS ORDER BY rnom ASC'
+    )
+    Params = <>
+    Left = 137
+    Top = 100
+  end
+  object qexe: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 137
+    Top = 176
+  end
+end

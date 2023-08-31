@@ -1,0 +1,263 @@
+object f_addc: Tf_addc
+  Left = 372
+  Height = 369
+  Top = 214
+  Width = 657
+  BorderIcons = [biSystemMenu]
+  Caption = 'Gestión de CLIENTES'
+  ClientHeight = 369
+  ClientWidth = 657
+  OnActivate = FormActivate
+  Position = poMainFormCenter
+  LCLVersion = '2.2.6.0'
+  object cn: TLabeledEdit
+    Left = 128
+    Height = 28
+    Top = 32
+    Width = 512
+    EditLabel.Height = 17
+    EditLabel.Width = 512
+    EditLabel.Caption = 'NOMBRE DEL CLIENTE / CONTACTOS'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    ParentFont = False
+    TabOrder = 1
+  end
+  object dir: TLabeledEdit
+    Left = 16
+    Height = 28
+    Top = 144
+    Width = 624
+    EditLabel.Height = 17
+    EditLabel.Width = 624
+    EditLabel.Caption = 'DIRECCION DE CONTACTO'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 200
+    ParentFont = False
+    TabOrder = 4
+  end
+  object tel: TLabeledEdit
+    Left = 16
+    Height = 28
+    Top = 200
+    Width = 624
+    EditLabel.Height = 17
+    EditLabel.Width = 624
+    EditLabel.Caption = 'TELEFONO/S'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 150
+    ParentFont = False
+    TabOrder = 5
+  end
+  object em: TLabeledEdit
+    Left = 16
+    Height = 28
+    Top = 256
+    Width = 480
+    EditLabel.Height = 17
+    EditLabel.Width = 480
+    EditLabel.Caption = 'CORREO ELECTRONICO'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 100
+    ParentFont = False
+    TabOrder = 6
+  end
+  object rs: TLabeledEdit
+    Left = 128
+    Height = 28
+    Top = 88
+    Width = 512
+    EditLabel.Height = 17
+    EditLabel.Width = 512
+    EditLabel.Caption = 'RAZON SOCIAL / NOMBRE FANTASIA'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 150
+    ParentFont = False
+    TabOrder = 3
+  end
+  object cuit: TEdit
+    Left = 16
+    Height = 28
+    Hint = 'Sin guiones ni puntos, solo números'
+    Top = 88
+    Width = 104
+    Alignment = taRightJustify
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    MaxLength = 11
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 2
+  end
+  object idc: TJLabeledIntegerEdit
+    Left = 16
+    Height = 28
+    Top = 32
+    Width = 104
+    DisplayFormat = '0'
+    Value = 0
+    NegativeColor = clDefault
+    Alignment = taRightJustify
+    EditLabel.Height = 17
+    EditLabel.Width = 104
+    EditLabel.Caption = 'COD.'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 0
+    TabStop = False
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 17
+    Top = 70
+    Width = 28
+    Caption = 'CUIT'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object b_save: TBitBtn
+    Left = 544
+    Height = 40
+    Top = 312
+    Width = 96
+    Caption = 'Guardar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_24
+    ImageIndex = 25
+    OnClick = b_saveClick
+    ParentFont = False
+    TabOrder = 8
+  end
+  object fec: TJLabeledDateEdit
+    Left = 504
+    Height = 28
+    Top = 256
+    Width = 107
+    DisplayFormat = 'dd/mm/yyyy'
+    ButtonWidth = 29
+    Alignment = taRightJustify
+    EditLabel.Height = 17
+    EditLabel.Width = 107
+    EditLabel.Caption = 'FECHA'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -15
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Shape1: TShape
+    Left = 16
+    Height = 1
+    Top = 296
+    Width = 624
+  end
+  object qexe: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 504
+    Top = 64
+  end
+end

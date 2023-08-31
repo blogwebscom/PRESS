@@ -1,0 +1,254 @@
+object f_bpre: Tf_bpre
+  Left = 346
+  Height = 505
+  Top = 195
+  Width = 772
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Buscador de Presupuestos'
+  ClientHeight = 505
+  ClientWidth = 772
+  OnActivate = FormActivate
+  Position = poMainFormCenter
+  LCLVersion = '2.2.6.0'
+  object lista: TDBGrid
+    Left = 16
+    Height = 344
+    Top = 109
+    Width = 739
+    AlternateColor = 16381168
+    Color = clWindow
+    Columns = <    
+      item
+        Alignment = taRightJustify
+        Title.Alignment = taCenter
+        Title.Caption = 'COD. PRES.'
+        Width = 75
+        FieldName = 'id_pres'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'FECHA'
+        Width = 80
+        FieldName = 'fec'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'CLIENTE'
+        Width = 300
+        FieldName = 'ncli'
+      end    
+      item
+        Alignment = taRightJustify
+        Title.Alignment = taCenter
+        Title.Caption = '$ TOTAL'
+        Width = 100
+        FieldName = 'total'
+        DisplayFormat = '#,0.00'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'ESTADO'
+        Width = 150
+        FieldName = 'estado'
+      end>
+    DataSource = dlista
+    Flat = True
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    Scrollbars = ssAutoVertical
+    TabOrder = 4
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI Semibold'
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    TitleFont.Style = [fsBold]
+    OnDblClick = listaDblClick
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 17
+    Top = 85
+    Width = 123
+    Caption = 'Cant. de Resultados:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object pcan: TLabel
+    Left = 144
+    Height = 17
+    Top = 85
+    Width = 7
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object fd: TJLabeledDateEdit
+    Left = 16
+    Height = 31
+    Top = 32
+    Width = 104
+    DisplayFormat = 'd/M/yyyy'
+    ButtonWidth = 29
+    Alignment = taRightJustify
+    EditLabel.Height = 17
+    EditLabel.Width = 104
+    EditLabel.Caption = 'Fecha Desde:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -17
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+  end
+  object fh: TJLabeledDateEdit
+    Left = 152
+    Height = 31
+    Top = 32
+    Width = 104
+    DisplayFormat = 'd/M/yyyy'
+    ButtonWidth = 29
+    Alignment = taRightJustify
+    EditLabel.Height = 17
+    EditLabel.Width = 104
+    EditLabel.Caption = 'Fecha Hasta:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -17
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object b_loc: TBitBtn
+    Left = 672
+    Height = 33
+    Top = 31
+    Width = 83
+    Caption = 'Buscar'
+    Margin = 7
+    Images = f_main.img_24
+    ImageIndex = 3
+    OnClick = b_locClick
+    Spacing = 2
+    TabOrder = 3
+  end
+  object lst_cli: TDBLookupComboBox
+    Left = 296
+    Height = 31
+    Top = 32
+    Width = 368
+    AutoComplete = True
+    AutoDropDown = True
+    AutoSize = False
+    Color = 16381168
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -17
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    KeyField = 'id_cl'
+    ListField = 'cnom'
+    ListFieldIndex = 0
+    ListSource = dclien
+    LookupCache = False
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Label4: TLabel
+    Left = 296
+    Height = 17
+    Top = 12
+    Width = 41
+    Caption = 'Cliente'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Shape1: TShape
+    Left = 16
+    Height = 1
+    Top = 72
+    Width = 739
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 17
+    Top = 464
+    Width = 305
+    Caption = '* Doble clic para abrir el Presupuesto seleccionado'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clPurple
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object qexe: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 456
+    Top = 181
+  end
+  object qclien: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 240
+    Top = 181
+  end
+  object dclien: TDataSource
+    DataSet = qclien
+    Left = 288
+    Top = 181
+  end
+  object qlista: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 240
+    Top = 269
+  end
+  object dlista: TDataSource
+    DataSet = qlista
+    Left = 288
+    Top = 269
+  end
+end
