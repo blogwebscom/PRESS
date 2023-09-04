@@ -4,7 +4,7 @@ object f_main: Tf_main
   Top = 104
   Width = 1177
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 310823'
+  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 040923'
   ClientHeight = 641
   ClientWidth = 1177
   Icon.Data = {

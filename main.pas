@@ -412,8 +412,7 @@ procedure Tf_main.tm_bpreClick(Sender: TObject);
 begin
   f_bpre:= Tf_bpre.Create(Self);
   f_bpre.ShowModal;
-  if not idpres.Value <> 0 then loc_pres()
-  else showmessage('Ha ocurrido un error con la búsqueda!');
+  if idpres.Value <> 0 then loc_pres();
 end;
 
 procedure Tf_main.carga_lista();
