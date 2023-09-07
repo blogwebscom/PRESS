@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, SQLite3Conn, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, sqlite3backup;
+  ExtCtrls, ZDataset, sqlite3backup;
 
 type
 
@@ -16,15 +16,36 @@ type
     bkok: TLabel;
     b_bk: TButton;
     b_re: TButton;
+    b_va: TButton;
+    b_vat: TButton;
+    ck_pd: TCheckBox;
+    ck_cl: TCheckBox;
+    ck_pv: TCheckBox;
+    ck_ru: TCheckBox;
     Label1: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     reok: TLabel;
+    Shape6: TShape;
+    Shape7: TShape;
+    tcl: TLabel;
+    tpv: TLabel;
+    tru: TLabel;
+    vok: TLabel;
     SelBK: TOpenDialog;
     Shape4: TShape;
+    Shape5: TShape;
     sqll3: TSQLite3Connection;
+    qexe: TZQuery;
+    tpd: TLabel;
     procedure b_bkClick(Sender: TObject);
     procedure b_reClick(Sender: TObject);
+    procedure b_vaClick(Sender: TObject);
+    procedure b_vatClick(Sender: TObject);
   private
 
   public
@@ -88,6 +109,84 @@ begin
       re.Restore(fileBK,sqll3,true);
       f_main.conex.Reconnect;
       MessageDlg('ATENCION','OK! Restauracion Finalizada!',mtInformation,[mbOK],0);
+      reok.Caption:= 'OK';
+    end;
+  end;
+end;
+
+procedure Tf_sis.b_vaClick(Sender: TObject);
+begin
+  //*Pregunta de Seguridad?
+  if MessageDlg('ATENCION!!','Está seguro que desea VACIAR la Tabla?'+#13#13+
+  'Este proceso es irreversible!',mtConfirmation,[mbYes, mbNo],0) = mrYes then
+  begin
+    // PRESUPUESTOS
+    qexe.Close;
+    qexe.SQL.Text:= 'DELETE FROM presupuestos';
+    qexe.ExecSQL;
+    qexe.Close;
+    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''presupuestos''';
+    qexe.ExecSQL;
+    // PRESUPUESTOS
+    qexe.Close;
+    qexe.SQL.Text:= 'DELETE FROM presdetalle';
+    qexe.ExecSQL;
+    qexe.Close;
+    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''presdetalle''';
+    qexe.ExecSQL;
+    vok.Caption:= 'OK';
+  end;
+end;
+
+procedure Tf_sis.b_vatClick(Sender: TObject);
+begin
+  //*Pregunta de Seguridad?
+  if MessageDlg('ATENCION!!','Está seguro que desea VACIAR las tablas seleccionadas?'+#13#13+
+  'Este proceso afecta a todo el sistema y es irreversible!',mtConfirmation,[mbYes, mbNo],0) = mrYes then
+  begin
+    // PRODUCTOS
+    if ck_pd.Checked then
+    begin
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM productos';
+      qexe.ExecSQL;
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''productos''';
+      qexe.ExecSQL;
+      tpd.Caption:= 'OK';
+    end;
+    // CLIENTES
+    if ck_cl.Checked then
+    begin
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM clientes';
+      qexe.ExecSQL;
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''clientes''';
+      qexe.ExecSQL;
+      tcl.Caption:= 'OK';
+    end;
+    // PROVEEDORES
+    if ck_pv.Checked then
+    begin
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM proveedores';
+      qexe.ExecSQL;
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''proveedores''';
+      qexe.ExecSQL;
+      tpv.Caption:= 'OK';
+    end;
+    // RUBROS
+    if ck_ru.Checked then
+    begin
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM rubros';
+      qexe.ExecSQL;
+      qexe.Close;
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''rubros''';
+      qexe.ExecSQL;
+      tru.Caption:= 'OK';
     end;
   end;
 end;

@@ -4,7 +4,8 @@ object f_main: Tf_main
   Top = 104
   Width = 1177
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 040923'
+  BorderStyle = bsSingle
+  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 070923'
   ClientHeight = 641
   ClientWidth = 1177
   Icon.Data = {
@@ -2200,6 +2201,7 @@ object f_main: Tf_main
       object tm_q: TMenuItem
         Caption = 'Salir'
         ShortCut = 121
+        OnClick = tm_qClick
       end
     end
   end

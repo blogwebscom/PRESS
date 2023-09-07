@@ -119,6 +119,7 @@ type
     procedure tm_npreClick(Sender: TObject);
     procedure tm_prodClick(Sender: TObject);
     procedure tm_provClick(Sender: TObject);
+    procedure tm_qClick(Sender: TObject);
     procedure tm_rubClick(Sender: TObject);
     procedure pdeExit(Sender: TObject);
     procedure pveExit(Sender: TObject);
@@ -758,6 +759,11 @@ procedure Tf_main.tm_provClick(Sender: TObject);
 begin
   f_prov:= Tf_prov.Create(Self);
   f_prov.ShowModal;
+end;
+
+procedure Tf_main.tm_qClick(Sender: TObject);
+begin
+  Application.Terminate;
 end;
 
 procedure Tf_main.tm_rubClick(Sender: TObject);

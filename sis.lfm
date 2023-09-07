@@ -1,20 +1,22 @@
 object f_sis: Tf_sis
   Left = 335
-  Height = 545
+  Height = 418
   Top = 205
-  Width = 745
+  Width = 913
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Opciones y Herramientas del Sistema'
-  ClientHeight = 545
-  ClientWidth = 745
+  ClientHeight = 418
+  ClientWidth = 913
   Position = poMainFormCenter
   LCLVersion = '2.2.6.0'
   object Shape4: TShape
     Left = 16
-    Height = 97
+    Height = 100
     Top = 28
     Width = 376
+    Brush.Style = bsBDiagonal
+    Pen.Color = clBlue
   end
   object b_bk: TButton
     Left = 304
@@ -23,15 +25,22 @@ object f_sis: Tf_sis
     Top = 44
     Width = 80
     Caption = 'Backup'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     OnClick = b_bkClick
+    ParentFont = False
     TabOrder = 0
   end
   object Label3: TLabel
     Left = 24
     Height = 17
-    Top = 44
-    Width = 243
-    Caption = 'Realiza una Copia de seguridad de la BD'
+    Top = 48
+    Width = 171
+    Caption = 'Copia de seguridad de la BD'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -43,9 +52,9 @@ object f_sis: Tf_sis
     ParentFont = False
   end
   object bkok: TLabel
-    Left = 280
+    Left = 264
     Height = 17
-    Top = 44
+    Top = 48
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -64,13 +73,20 @@ object f_sis: Tf_sis
     Top = 84
     Width = 80
     Caption = 'Restaurar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     OnClick = b_reClick
+    ParentFont = False
     TabOrder = 1
   end
   object Label4: TLabel
     Left = 24
     Height = 17
-    Top = 84
+    Top = 88
     Width = 219
     Caption = 'Restaurar la BD a una copia anterior'
     Font.CharSet = ANSI_CHARSET
@@ -84,9 +100,9 @@ object f_sis: Tf_sis
     ParentFont = False
   end
   object reok: TLabel
-    Left = 280
+    Left = 264
     Height = 17
-    Top = 84
+    Top = 88
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -103,30 +119,290 @@ object f_sis: Tf_sis
     Left = 16
     Height = 17
     Top = 8
-    Width = 250
+    Width = 268
     Caption = 'NO realice ninguna acción si no está seguro!'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
     Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
-    Font.Style = [fsItalic]
+    Font.Style = [fsBold, fsItalic]
     ParentColor = False
     ParentFont = False
+  end
+  object Shape5: TShape
+    Left = 16
+    Height = 81
+    Top = 136
+    Width = 376
+    Brush.Style = bsBDiagonal
+    Pen.Color = clBlue
+  end
+  object Label5: TLabel
+    Left = 24
+    Height = 17
+    Top = 152
+    Width = 179
+    Caption = 'Vaciar Todos los Movimientos'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object vok: TLabel
+    Left = 264
+    Height = 17
+    Top = 152
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object b_va: TButton
+    Left = 304
+    Height = 33
+    Top = 152
+    Width = 80
+    Caption = 'Vaciar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = b_vaClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Label6: TLabel
+    Left = 40
+    Height = 32
+    Top = 176
+    Width = 203
+    AutoSize = False
+    Caption = 'Con esta rutina se eliminan todos los Presupuestos guardados.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
+  end
+  object Shape6: TShape
+    Left = 16
+    Height = 176
+    Top = 224
+    Width = 376
+    Brush.Style = bsBDiagonal
+    Pen.Color = clBlue
+  end
+  object Label7: TLabel
+    Left = 24
+    Height = 17
+    Top = 240
+    Width = 142
+    Caption = 'Vaciado Tabla de Datos:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object tpd: TLabel
+    Left = 264
+    Height = 17
+    Top = 268
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object b_vat: TButton
+    Left = 304
+    Height = 33
+    Top = 240
+    Width = 80
+    Caption = 'Vaciar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = b_vatClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object tcl: TLabel
+    Left = 264
+    Height = 17
+    Top = 296
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object ck_pd: TCheckBox
+    Left = 40
+    Height = 21
+    Top = 264
+    Width = 134
+    Caption = 'Tabla de Productos'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 4
+  end
+  object ck_cl: TCheckBox
+    Left = 40
+    Height = 21
+    Top = 292
+    Width = 120
+    Caption = 'Tabla de Clientes'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 5
+  end
+  object ck_pv: TCheckBox
+    Left = 40
+    Height = 21
+    Top = 320
+    Width = 149
+    Caption = 'Tabla de Proveedores'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 6
+  end
+  object tpv: TLabel
+    Left = 264
+    Height = 17
+    Top = 324
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object tru: TLabel
+    Left = 264
+    Height = 17
+    Top = 352
+    Width = 9
+    Caption = '...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object ck_ru: TCheckBox
+    Left = 40
+    Height = 21
+    Top = 348
+    Width = 117
+    Caption = 'Tabla de Rubros'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Label8: TLabel
+    Left = 408
+    Height = 17
+    Top = 8
+    Width = 351
+    Caption = 'Datos del Negocio para los informes e impresiones (prox.)'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Shape7: TShape
+    Left = 408
+    Height = 372
+    Top = 28
+    Width = 488
+    Brush.Style = bsBDiagonal
+    Pen.Color = clGreen
   end
   object sqll3: TSQLite3Connection
     Connected = False
     LoginPrompt = False
     KeepConnection = False
     AlwaysUseBigint = False
-    Left = 456
-    Top = 36
+    Left = 344
+    Top = 280
   end
   object SelBK: TOpenDialog
     Title = 'Seleccione una Copia de Seguridad:'
     Filter = 'Copia de Seguridad|*.db'
     Options = [ofEnableSizing]
-    Left = 408
-    Top = 36
+    Left = 304
+    Top = 280
+  end
+  object qexe: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 304
+    Top = 336
   end
 end
