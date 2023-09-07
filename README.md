@@ -20,6 +20,7 @@ El sistema como siempre es gratis para nuestra comunidad, funciona en windows y 
 En esta última versión 2.0 el sistema Funciona en windows de 64 bits y es portable, no necesita instalación. 
 
 Esta desarrollado con lazarus-ide en pascal con base de datos sqlite 3. 
-Complementos usados: jujiboutils, uniqueinstance, zeoslib 
+Complementos necesarios para compilar: jujiboutils, uniqueinstance, zeoslib 
 
-Más info en: https://www.webscom.com.ar/press-nueva-version-sistema-para-crear-presupuestos-para-tus-clientes/ 
+Se puede descargar la version ejecutable para windows en nuestra web: 
+https://www.webscom.com.ar/press-nueva-version-sistema-para-crear-presupuestos-para-tus-clientes/ 
