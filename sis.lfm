@@ -1,7 +1,7 @@
 object f_sis: Tf_sis
-  Left = 335
+  Left = 232
   Height = 418
-  Top = 205
+  Top = 196
   Width = 913
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -384,6 +384,211 @@ object f_sis: Tf_sis
     Brush.Style = bsBDiagonal
     Pen.Color = clGreen
   end
+  object en: TLabeledEdit
+    Left = 416
+    Height = 29
+    Hint = 'Max. 150 caracteres'
+    Top = 56
+    Width = 472
+    EditLabel.Height = 17
+    EditLabel.Width = 472
+    EditLabel.Caption = 'Nombre:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 150
+    ParentFont = False
+    TabOrder = 8
+  end
+  object ed: TLabeledEdit
+    Left = 416
+    Height = 29
+    Hint = 'Max. 150 caracteres'
+    Top = 112
+    Width = 472
+    EditLabel.Height = 17
+    EditLabel.Width = 472
+    EditLabel.Caption = 'Dirección Física:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 200
+    ParentFont = False
+    TabOrder = 9
+  end
+  object et: TLabeledEdit
+    Left = 416
+    Height = 29
+    Hint = 'Max. 150 caracteres'
+    Top = 168
+    Width = 472
+    EditLabel.Height = 17
+    EditLabel.Width = 472
+    EditLabel.Caption = 'Teléfono/s de Contacto:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 100
+    ParentFont = False
+    TabOrder = 10
+  end
+  object em: TLabeledEdit
+    Left = 416
+    Height = 29
+    Hint = 'Max. 100 caracteres'
+    Top = 224
+    Width = 232
+    EditLabel.Height = 17
+    EditLabel.Width = 232
+    EditLabel.Caption = 'Correo Electrónico de Contacto:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 100
+    ParentFont = False
+    TabOrder = 11
+  end
+  object ep: TLabeledEdit
+    Left = 656
+    Height = 29
+    Hint = 'Max. 100 caracteres'
+    Top = 224
+    Width = 232
+    EditLabel.Height = 17
+    EditLabel.Width = 232
+    EditLabel.Caption = 'Sitio Web / Página:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 50
+    ParentFont = False
+    TabOrder = 12
+  end
+  object ea: TLabeledEdit
+    Left = 416
+    Height = 29
+    Hint = 'Max. 150 caracteres'
+    Top = 280
+    Width = 472
+    EditLabel.Height = 17
+    EditLabel.Width = 472
+    EditLabel.Caption = 'Información Adicional:'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.CharSet = ANSI_CHARSET
+    EditLabel.Font.Height = -13
+    EditLabel.Font.Name = 'Segoe UI Semibold'
+    EditLabel.Font.Pitch = fpVariable
+    EditLabel.Font.Quality = fqDraft
+    EditLabel.Font.Style = [fsBold]
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    LabelSpacing = 2
+    MaxLength = 200
+    ParentFont = False
+    TabOrder = 13
+  end
+  object b_mod: TBitBtn
+    Left = 696
+    Height = 40
+    Top = 344
+    Width = 96
+    Caption = 'Editar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_32
+    ImageIndex = 2
+    OnClick = b_modClick
+    ParentFont = False
+    TabOrder = 14
+  end
+  object b_save: TBitBtn
+    Left = 792
+    Height = 40
+    Top = 344
+    Width = 96
+    Caption = 'Guardar'
+    Enabled = False
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = f_main.img_24
+    ImageIndex = 25
+    OnClick = b_saveClick
+    ParentFont = False
+    TabOrder = 15
+  end
   object sqll3: TSQLite3Connection
     Connected = False
     LoginPrompt = False
@@ -404,5 +609,17 @@ object f_sis: Tf_sis
     Params = <>
     Left = 304
     Top = 336
+  end
+  object locimg: TOpenPictureDialog
+    Title = 'Localiza un archivo de imágen'
+    Filter = 'Gráficos|*.bmp;*.png;*.jpg;*.jpeg;*.gif'
+    Left = 784
+    Top = 40
+  end
+  object qexe1: TZQuery
+    Connection = f_main.conex
+    Params = <>
+    Left = 840
+    Top = 40
   end
 end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, SQLite3Conn, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ZDataset, sqlite3backup;
+  ExtCtrls, ExtDlgs, Buttons, ZDataset, sqlite3backup;
 
 type
 
@@ -15,13 +15,21 @@ type
   Tf_sis = class(TForm)
     bkok: TLabel;
     b_bk: TButton;
+    b_mod: TBitBtn;
     b_re: TButton;
+    b_save: TBitBtn;
     b_va: TButton;
     b_vat: TButton;
     ck_pd: TCheckBox;
     ck_cl: TCheckBox;
     ck_pv: TCheckBox;
     ck_ru: TCheckBox;
+    ea: TLabeledEdit;
+    ed: TLabeledEdit;
+    em: TLabeledEdit;
+    en: TLabeledEdit;
+    ep: TLabeledEdit;
+    et: TLabeledEdit;
     Label1: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -29,6 +37,8 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    locimg: TOpenPictureDialog;
+    qexe1: TZQuery;
     reok: TLabel;
     Shape6: TShape;
     Shape7: TShape;
@@ -43,7 +53,9 @@ type
     qexe: TZQuery;
     tpd: TLabel;
     procedure b_bkClick(Sender: TObject);
+    procedure b_modClick(Sender: TObject);
     procedure b_reClick(Sender: TObject);
+    procedure b_saveClick(Sender: TObject);
     procedure b_vaClick(Sender: TObject);
     procedure b_vatClick(Sender: TObject);
   private
@@ -89,6 +101,23 @@ begin
     'Webscom Sistemas - Email: webscom.ar@gmail.com',mtError,[mbOK],0);
 end;
 
+procedure Tf_sis.b_modClick(Sender: TObject);
+var
+  i: byte;
+begin
+  {Habilita}
+  for i:= 1 to  ComponentCount - 1 do
+  if Components[i] is TLabeledEdit then
+  begin
+    TLabeledEdit(Components[i]).Enabled:= true;
+    TLabeledEdit(Components[i]).Font.Color:= clBlack;
+  end;
+  // ----
+  b_mod.Enabled:= false;
+  b_save.Enabled:= true;
+  en.SetFocus;
+end;
+
 procedure Tf_sis.b_reClick(Sender: TObject);
 var
   BKFolder, fileBK: string;
@@ -112,6 +141,34 @@ begin
       reok.Caption:= 'OK';
     end;
   end;
+end;
+
+procedure Tf_sis.b_saveClick(Sender: TObject);
+var
+  i: byte;
+begin
+  qexe.Close;
+  qexe.SQL.Text:= 'UPDATE SISTEMA SET enom=:NO, edire=:DI, etel=:TE,'+
+  'email=:EM, eweb=:WE, einfo=:IN, elogo=:LO WHERE id_sys=1';
+  qexe.ParamByName('NO').AsString:= trim(en.Text);
+  qexe.ParamByName('DI').AsString:= trim(ed.Text);
+  qexe.ParamByName('TE').AsString:= trim(et.Text);
+  qexe.ParamByName('EM').AsString:= trim(em.Text);
+  qexe.ParamByName('WE').AsString:= trim(ep.Text);
+  qexe.ParamByName('LO').AsString:= 'sin_logo';
+  qexe.ParamByName('IN').AsString:= trim(ea.Text);
+  qexe.ExecSQL;
+  showmessage('OK, lo Datos fueron modificados con éxito.');
+  {Deshabilitaciones}
+  for i:= 1 to  ComponentCount - 1 do
+  if Components[i] is TLabeledEdit then
+  begin
+    TLabeledEdit(Components[i]).Enabled:= false;
+    TLabeledEdit(Components[i]).Font.Color:= clBlue;
+  end;
+  // ----
+  b_mod.Enabled:= true;
+  b_save.Enabled:= false;
 end;
 
 procedure Tf_sis.b_vaClick(Sender: TObject);
