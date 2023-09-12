@@ -140,6 +140,8 @@ type
     procedure add_prod();
     procedure loc_pres();
     // -------------------------> se pueden crear procesos para HAB y DESHAB componenetes!
+    var
+      enom, edire, etel, email, eweb, einfo, elogo: string; {varibles globales de negocio}
 
   end;
 
@@ -174,6 +176,16 @@ begin
     DefaultFormatSettings.ThousandSeparator:= '.';
     // Variables
     dup:= 'N';
+    qexe.Close;
+    qexe.SQL.Text:= 'SELECT * FROM sistema';
+    qexe.Open;
+    enom:= qexe.FieldByName('enom').Text;
+    edire:= qexe.FieldByName('edire').Text;
+    etel:= qexe.FieldByName('etel').Text;
+    email:= qexe.FieldByName('email').Text;
+    eweb:= qexe.FieldByName('eweb').Text;
+    einfo:= qexe.FieldByName('einfo').Text;
+    elogo:= qexe.FieldByName('elogo').Text;
     {Carga de Datos // Aquí no en el inicio, solo pruebas}
     {carga_cli(); carga_pd(); carga_pv();}
     b_nvo.SetFocus;
@@ -504,12 +516,24 @@ end;
 
 procedure Tf_main.b_locClick(Sender: TObject);
 begin
-  idpres.Enabled:= true;
-  idpres.ReadOnly:= false;
-  b_lp.Enabled:= true;
-  MessageDlg('ATENCION!','Indique el COD. INTERNO del Presupuesto,'+#13+
-  'Y luego presione la Lupa para Buscar.',mtinformation,[mbOk],0);
-  idpres.SetFocus;
+  // OPCIONES!
+  case QuestionDlg('Localización:', 'Seleccione una opción:'+#13#13+
+  '- Busca por Número de Presupuesto.'+#13+
+  '- Realiza una búsqueda filtrada por fechas.',mtConfirmation,
+  [mrYes, 'Por Número','IsDefault', mrNo, 'Buscador'],'') of
+    mrYes: begin  // ---------- POR NUMERO
+      idpres.Enabled:= true;
+      idpres.ReadOnly:= false;
+      b_lp.Enabled:= true;
+      idpres.SetFocus;
+    end;
+    mrNo: begin   // ---------- BUSCADOR
+      f_bpre:= Tf_bpre.Create(Self);
+      f_bpre.ShowModal;
+      if idpres.Value <> 0 then loc_pres();
+    end;
+  end;
+  // -------------------------
 end;
 
 procedure Tf_main.lpvSelect(Sender: TObject);

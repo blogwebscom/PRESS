@@ -33,6 +33,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="lazreport"/>
+      </Item>
+      <Item>
         <PackageName Value="uniqueinstance_package"/>
       </Item>
       <Item>

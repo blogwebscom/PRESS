@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, DBGrids, ZDataset, JLabeledIntegerEdit, JLabeledDateEdit, add_cl;
+  Buttons, DBGrids, ZDataset, JLabeledIntegerEdit, JLabeledDateEdit, add_cl,
+  LR_Class, LR_DBSet;
 
 type
 
@@ -18,17 +19,21 @@ type
     b_mod: TBitBtn;
     b_nvo: TBitBtn;
     dlista: TDataSource;
+    drepo: TfrDBDataSet;
     Label3: TLabel;
     lista: TDBGrid;
     pcan: TLabel;
     qexe: TZQuery;
     qlista: TZQuery;
+    repo: TfrReport;
     xnom: TLabeledEdit;
     procedure b_delClick(Sender: TObject);
+    procedure b_impClick(Sender: TObject);
     procedure b_modClick(Sender: TObject);
     procedure b_nvoClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure listaSelectEditor(Sender: TObject; Column: TColumn);
+    procedure repoGetValue(const ParName: String; var ParValue: Variant);
     procedure xnomChange(Sender: TObject);
   private
 
@@ -62,6 +67,18 @@ begin
   end else begin
     b_mod.Enabled:= false; b_del.Enabled:= false; b_imp.Enabled:= false;
   end;
+end;
+
+procedure Tf_cli.repoGetValue(const ParName: String; var ParValue: Variant);
+begin
+  {Variables para Informes}
+  if parname = 'EN' then parvalue:= f_main.enom;
+  if parname = 'ED' then parvalue:= f_main.edire;
+  if parname = 'ET' then parvalue:= f_main.etel;
+  if parname = 'EM' then parvalue:= f_main.email;
+  if parname = 'EW' then parvalue:= f_main.eweb;
+  if parname = 'EI' then parvalue:= f_main.einfo;
+  if parname = 'EL' then parvalue:= f_main.elogo;
 end;
 
 procedure Tf_cli.xnomChange(Sender: TObject);
@@ -117,6 +134,20 @@ begin
     qexe.ExecSQL;
     lista_c();
   end;
+end;
+
+procedure Tf_cli.b_impClick(Sender: TObject);
+begin
+  repo.LoadFromFile(ExtractFilePath(Application.EXEName)+'inf\iclientes.lrf'); // plural
+  if repo.PrepareReport then
+  begin
+    case QuestionDlg('Reporte', 'Seleccione una opción:', mtConfirmation,
+    [mrYes, 'Directo', mrNo, 'Vista Previa','IsDefault'], '') of
+      mrYes: repo.PrintPreparedReport('',0);
+      mrNo: repo.ShowReport;
+    end;
+  end else
+    showmessage('Error Generando el Reporte!');
 end;
 
 procedure Tf_cli.lista_c();

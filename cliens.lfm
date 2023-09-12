@@ -83,6 +83,7 @@ object f_cli: Tf_cli
     Font.Style = [fsBold]
     Images = f_main.img_24
     ImageIndex = 7
+    OnClick = b_impClick
     ParentFont = False
     TabOrder = 3
   end
@@ -209,6 +210,21 @@ object f_cli: Tf_cli
     Connection = f_main.conex
     Params = <>
     Left = 320
+    Top = 192
+  end
+  object repo: TfrReport
+    Dataset = drepo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbPrint, pbExit]
+    DataType = dtDataSet
+    OnGetValue = repoGetValue
+    Left = 408
+    Top = 192
+  end
+  object drepo: TfrDBDataSet
+    DataSet = qlista
+    Left = 461
     Top = 192
   end
 end
