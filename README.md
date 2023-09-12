@@ -11,4 +11,5 @@ Esta desarrollado con lazarus-ide en pascal con base de datos sqlite 3.
 Complementos necesarios para compilar: jujiboutils, uniqueinstance, zeoslib 
 
 Se puede descargar la version ejecutable para windows en nuestra web:
+
 https://www.webscom.com.ar/press-nueva-version-sistema-para-crear-presupuestos-para-tus-clientes/ 
