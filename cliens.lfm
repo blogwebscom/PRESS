@@ -146,7 +146,7 @@ object f_cli: Tf_cli
       end    
       item
         Title.Alignment = taCenter
-        Title.Caption = 'TELEFNO/S'
+        Title.Caption = 'TELEFONO/S'
         Width = 200
         FieldName = 'tel'
       end>

@@ -155,6 +155,7 @@ object f_prov: Tf_prov
     Font.Style = [fsBold]
     Images = f_main.img_24
     ImageIndex = 7
+    OnClick = b_impClick
     ParentFont = False
     TabOrder = 11
   end
@@ -369,5 +370,20 @@ object f_prov: Tf_prov
     Params = <>
     Left = 165
     Top = 204
+  end
+  object repo: TfrReport
+    Dataset = drepo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbPrint, pbExit]
+    DataType = dtDataSet
+    OnGetValue = repoGetValue
+    Left = 312
+    Top = 128
+  end
+  object drepo: TfrDBDataSet
+    DataSet = qlista
+    Left = 365
+    Top = 128
   end
 end

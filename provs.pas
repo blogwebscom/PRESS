@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, Buttons,
-  StdCtrls, ExtCtrls, ZDataset;
+  StdCtrls, ExtCtrls, LR_Class, LR_DBSet, ZDataset;
 
 type
 
@@ -19,6 +19,7 @@ type
     b_nvo: TBitBtn;
     b_save: TBitBtn;
     dlista: TDataSource;
+    drepo: TfrDBDataSet;
     Label1: TLabel;
     Label3: TLabel;
     lista: TDBGrid;
@@ -26,6 +27,7 @@ type
     dir: TLabeledEdit;
     em: TLabeledEdit;
     extra: TLabeledEdit;
+    repo: TfrReport;
     web: TLabeledEdit;
     qexe: TZQuery;
     qlista: TZQuery;
@@ -34,10 +36,12 @@ type
     Shape2: TShape;
     tel: TLabeledEdit;
     procedure b_delClick(Sender: TObject);
+    procedure b_impClick(Sender: TObject);
     procedure b_modClick(Sender: TObject);
     procedure b_nvoClick(Sender: TObject);
     procedure b_saveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure repoGetValue(const ParName: String; var ParValue: Variant);
   private
     procedure lista_pv();
 
@@ -50,6 +54,9 @@ var
   oper: char;
 
 implementation
+
+uses
+  main;
 
 {$R *.lfm}
 
@@ -145,6 +152,32 @@ begin
     pvn.Text:= ''; tel.Text:= ''; dir.Text:= '';
     em.Text:= ''; web.Text:= ''; extra.Text:= '';
   end;
+end;
+
+procedure Tf_prov.b_impClick(Sender: TObject);
+begin
+  repo.LoadFromFile(ExtractFilePath(Application.EXEName)+'inf\iprovees.lrf'); // plural
+  if repo.PrepareReport then
+  begin
+    case QuestionDlg('Reporte', 'Seleccione una opción:', mtConfirmation,
+    [mrYes, 'Directo', mrNo, 'Vista Previa','IsDefault'], '') of
+      mrYes: repo.PrintPreparedReport('',0);
+      mrNo: repo.ShowReport;
+    end;
+  end else
+    showmessage('Error Generando el Reporte!');
+end;
+
+procedure Tf_prov.repoGetValue(const ParName: String; var ParValue: Variant);
+begin
+  {Variables para Informes}
+  if parname = 'EN' then parvalue:= f_main.enom;
+  if parname = 'ED' then parvalue:= f_main.edire;
+  if parname = 'ET' then parvalue:= f_main.etel;
+  if parname = 'EM' then parvalue:= f_main.email;
+  if parname = 'EW' then parvalue:= f_main.eweb;
+  if parname = 'EI' then parvalue:= f_main.einfo;
+  if parname = 'EL' then parvalue:= f_main.elogo;
 end;
 
 procedure Tf_prov.lista_pv();
