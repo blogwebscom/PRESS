@@ -14,7 +14,6 @@ type
 
   Tf_rub = class(TForm)
     b_del: TBitBtn;
-    b_imp: TBitBtn;
     b_mod: TBitBtn;
     b_nvo: TBitBtn;
     b_save: TBitBtn;
@@ -82,7 +81,6 @@ begin
   b_nvo.Enabled:= false;
   b_mod.Enabled:= false;
   b_del.Enabled:= false;
-  b_imp.Enabled:= false;
   b_save.Enabled:= true;
   rnom.SetFocus
 end;
@@ -96,7 +94,6 @@ begin
   b_nvo.Enabled:= false;
   b_mod.Enabled:= false;
   b_del.Enabled:= false;
-  b_imp.Enabled:= false;
   b_save.Enabled:= true;
   rnom.SetFocus;
 end;
@@ -123,7 +120,6 @@ begin
   // Hab.
   lista.Enabled:= true;
   b_nvo.Enabled:= true;
-  b_imp.Enabled:= true;
   b_save.Enabled:= false;
   b_nvo.SetFocus;
 end;

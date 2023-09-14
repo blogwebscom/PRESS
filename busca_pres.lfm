@@ -1,12 +1,12 @@
 object f_bpre: Tf_bpre
   Left = 346
-  Height = 505
+  Height = 513
   Top = 195
   Width = 772
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Buscador de Presupuestos'
-  ClientHeight = 505
+  ClientHeight = 513
   ClientWidth = 772
   OnActivate = FormActivate
   Position = poMainFormCenter
@@ -158,10 +158,17 @@ object f_bpre: Tf_bpre
     Top = 31
     Width = 83
     Caption = 'Buscar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     Margin = 7
     Images = f_main.img_24
     ImageIndex = 3
     OnClick = b_locClick
+    ParentFont = False
     Spacing = 2
     TabOrder = 3
   end
@@ -222,6 +229,22 @@ object f_bpre: Tf_bpre
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
+  end
+  object b_all: TBitBtn
+    Left = 672
+    Height = 33
+    Top = 464
+    Width = 83
+    Caption = 'Ver Todos'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = b_allClick
+    ParentFont = False
+    TabOrder = 5
   end
   object qexe: TZQuery
     Connection = f_main.conex

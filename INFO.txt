@@ -1,0 +1,26 @@
+.:: PRESS v2.0 ::. (versión gratuita)
+----------------------------------------------------------------------------------------
+Administración de Presupuestos para negocios
+con control de stock, clientes y proveedores
+----------------------------------------------------------------------------------------
+Creado por webscom sistemas
+Sitio web y soporte: www.webscom.com.ar
+----------------------------------------------------------------------------------------
+- VERSION PORTABLE -
+Recomendamos extraer el contenido del ZIP en una carpeta en el disco 
+y luego crear el acceso directo al PRESS.exe con los permisos adecuados.
+----------------------------------------------------------------------------------------
+- RECURSOS USADOS -
+* Sistema creado con lazarus y sqlite.
+* Iconos de iconos8.es
+
+Revision 120923
+- se agrega informe, impresion de listado de clientes
+- en pantalla principal, boton localizar con opciones (x numero/buscador)
+
+Revision 130923
+- se agrega informe, impresion de listado de Proveedores
+
+Revision 140923
+- se agrega informes impresion de Presupuesto y listado de Productos
+- se agrega boton "ver todos" en el buscador de presupuestos

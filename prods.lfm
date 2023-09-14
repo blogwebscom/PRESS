@@ -89,6 +89,7 @@ object f_prod: Tf_prod
     Font.Style = [fsBold]
     Images = f_main.img_24
     ImageIndex = 27
+    OnClick = b_impClick
     ParentFont = False
     TabOrder = 9
   end
@@ -387,6 +388,21 @@ object f_prod: Tf_prod
     Connection = f_main.conex
     Params = <>
     Left = 256
+    Top = 288
+  end
+  object repo: TfrReport
+    Dataset = drepo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbPrint, pbExit]
+    DataType = dtDataSet
+    OnGetValue = repoGetValue
+    Left = 440
+    Top = 288
+  end
+  object drepo: TfrDBDataSet
+    DataSet = qlista
+    Left = 493
     Top = 288
   end
 end

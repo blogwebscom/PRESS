@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Menus,
   DBGrids, Buttons, DBCtrls, StdCtrls, JLabeledIntegerEdit, JLabeledFloatEdit,
   JLabeledDateEdit, ZDataset, ZConnection, prods, provs, cliens, rubros, add_pd,
-  add_cl, sis, busca_pres, UniqueInstance, Grids, LCLType, Translations;
+  add_cl, sis, busca_pres, LR_Class, LR_DBSet, UniqueInstance, Grids, LCLType,
+  Translations;
 
 type
 
@@ -28,6 +29,8 @@ type
     b_add: TBitBtn;
     b_np: TBitBtn;
     b_bc: TBitBtn;
+    drepo: TfrDBDataSet;
+    repo: TfrReport;
     stk: TJLabeledIntegerEdit;
     Label10: TLabel;
     lpv: TComboBox;
@@ -95,6 +98,7 @@ type
     procedure b_bcClick(Sender: TObject);
     procedure b_bpClick(Sender: TObject);
     procedure b_delClick(Sender: TObject);
+    procedure b_impClick(Sender: TObject);
     procedure b_locClick(Sender: TObject);
     procedure b_lpClick(Sender: TObject);
     procedure b_modClick(Sender: TObject);
@@ -114,6 +118,7 @@ type
     procedure listaPrepareCanvas(sender: TObject; DataCol: Integer; Column: TColumn; AState: TGridDrawState);
     procedure lpvSelect(Sender: TObject);
     procedure lst_prodSelect(Sender: TObject);
+    procedure repoGetValue(const ParName: String; var ParValue: Variant);
     procedure tm_bpreClick(Sender: TObject);
     procedure tm_cliClick(Sender: TObject);
     procedure tm_npreClick(Sender: TObject);
@@ -512,6 +517,32 @@ begin
     b_mod.Enabled:= false; b_del.Enabled:= false;
     b_imp.Enabled:= false;
   end;
+end;
+
+procedure Tf_main.b_impClick(Sender: TObject);
+begin
+  repo.LoadFromFile(ExtractFilePath(Application.EXEName)+'inf\ipresup.lrf'); // plural
+  if repo.PrepareReport then
+  begin
+    case QuestionDlg('Reporte', 'Seleccione una opción:', mtConfirmation,
+    [mrYes, 'Directo', mrNo, 'Vista Previa','IsDefault'], '') of
+      mrYes: repo.PrintPreparedReport('',0);
+      mrNo: repo.ShowReport;
+    end;
+  end else
+    showmessage('Error Generando el Reporte!');
+end;
+
+procedure Tf_main.repoGetValue(const ParName: String; var ParValue: Variant);
+begin
+  {Variables para Informes}
+  if parname = 'EN' then parvalue:= enom;
+  if parname = 'ED' then parvalue:= edire;
+  if parname = 'ET' then parvalue:= etel;
+  if parname = 'EM' then parvalue:= email;
+  if parname = 'EW' then parvalue:= eweb;
+  if parname = 'EI' then parvalue:= einfo;
+  if parname = 'EL' then parvalue:= elogo;
 end;
 
 procedure Tf_main.b_locClick(Sender: TObject);

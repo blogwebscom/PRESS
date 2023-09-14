@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, Buttons, DBGrids,
-  StdCtrls, ExtCtrls, DBCtrls, ZDataset, JLabeledIntegerEdit, add_pd, LCLType;
+  StdCtrls, ExtCtrls, DBCtrls, ZDataset, JLabeledIntegerEdit, add_pd, LR_Class,
+  LR_DBSet, LCLType;
 
 type
 
@@ -18,6 +19,7 @@ type
     b_imp: TBitBtn;
     b_mod: TBitBtn;
     b_nvo: TBitBtn;
+    drepo: TfrDBDataSet;
     drubros: TDataSource;
     lst_ord: TComboBox;
     lst_rub: TDBLookupComboBox;
@@ -25,6 +27,7 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    repo: TfrReport;
     Shape1: TShape;
     xnom: TLabeledEdit;
     dlista: TDataSource;
@@ -35,6 +38,7 @@ type
     qexe: TZQuery;
     procedure b_bpClick(Sender: TObject);
     procedure b_delClick(Sender: TObject);
+    procedure b_impClick(Sender: TObject);
     procedure b_modClick(Sender: TObject);
     procedure b_nvoClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -42,6 +46,7 @@ type
     procedure idpKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lst_ordSelect(Sender: TObject);
     procedure lst_rubSelect(Sender: TObject);
+    procedure repoGetValue(const ParName: String; var ParValue: Variant);
     procedure xnomChange(Sender: TObject);
   private
 
@@ -56,6 +61,9 @@ var
   ord: string; // filtro x palabras
 
 implementation
+
+uses
+  main;
 
 {$R *.lfm}
 
@@ -186,6 +194,32 @@ begin
     qexe.ExecSQL;
     lista_p();
   end;
+end;
+
+procedure Tf_prod.b_impClick(Sender: TObject);
+begin
+  repo.LoadFromFile(ExtractFilePath(Application.EXEName)+'inf\iprodus.lrf'); // plural
+  if repo.PrepareReport then
+  begin
+    case QuestionDlg('Reporte', 'Seleccione una opción:', mtConfirmation,
+    [mrYes, 'Directo', mrNo, 'Vista Previa','IsDefault'], '') of
+      mrYes: repo.PrintPreparedReport('',0);
+      mrNo: repo.ShowReport;
+    end;
+  end else
+    showmessage('Error Generando el Reporte!');
+end;
+
+procedure Tf_prod.repoGetValue(const ParName: String; var ParValue: Variant);
+begin
+  {Variables para Informes}
+  if parname = 'EN' then parvalue:= f_main.enom;
+  if parname = 'ED' then parvalue:= f_main.edire;
+  if parname = 'ET' then parvalue:= f_main.etel;
+  if parname = 'EM' then parvalue:= f_main.email;
+  if parname = 'EW' then parvalue:= f_main.eweb;
+  if parname = 'EI' then parvalue:= f_main.einfo;
+  if parname = 'EL' then parvalue:= f_main.elogo;
 end;
 
 procedure Tf_prod.b_bpClick(Sender: TObject);

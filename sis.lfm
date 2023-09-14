@@ -231,7 +231,7 @@ object f_sis: Tf_sis
   object tpd: TLabel
     Left = 264
     Height = 17
-    Top = 268
+    Top = 278
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -247,7 +247,7 @@ object f_sis: Tf_sis
   object b_vat: TButton
     Left = 304
     Height = 33
-    Top = 240
+    Top = 352
     Width = 80
     Caption = 'Vaciar'
     Font.CharSet = ANSI_CHARSET
@@ -263,7 +263,7 @@ object f_sis: Tf_sis
   object tcl: TLabel
     Left = 264
     Height = 17
-    Top = 296
+    Top = 306
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -279,7 +279,7 @@ object f_sis: Tf_sis
   object ck_pd: TCheckBox
     Left = 40
     Height = 21
-    Top = 264
+    Top = 274
     Width = 134
     Caption = 'Tabla de Productos'
     Font.CharSet = ANSI_CHARSET
@@ -292,7 +292,7 @@ object f_sis: Tf_sis
   object ck_cl: TCheckBox
     Left = 40
     Height = 21
-    Top = 292
+    Top = 302
     Width = 120
     Caption = 'Tabla de Clientes'
     Font.CharSet = ANSI_CHARSET
@@ -305,7 +305,7 @@ object f_sis: Tf_sis
   object ck_pv: TCheckBox
     Left = 40
     Height = 21
-    Top = 320
+    Top = 330
     Width = 149
     Caption = 'Tabla de Proveedores'
     Font.CharSet = ANSI_CHARSET
@@ -318,7 +318,7 @@ object f_sis: Tf_sis
   object tpv: TLabel
     Left = 264
     Height = 17
-    Top = 324
+    Top = 334
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -334,7 +334,7 @@ object f_sis: Tf_sis
   object tru: TLabel
     Left = 264
     Height = 17
-    Top = 352
+    Top = 362
     Width = 9
     Caption = '...'
     Font.CharSet = ANSI_CHARSET
@@ -350,7 +350,7 @@ object f_sis: Tf_sis
   object ck_ru: TCheckBox
     Left = 40
     Height = 21
-    Top = 348
+    Top = 358
     Width = 117
     Caption = 'Tabla de Rubros'
     Font.CharSet = ANSI_CHARSET
@@ -595,20 +595,20 @@ object f_sis: Tf_sis
     KeepConnection = False
     AlwaysUseBigint = False
     Left = 344
-    Top = 280
+    Top = 240
   end
   object SelBK: TOpenDialog
     Title = 'Seleccione una Copia de Seguridad:'
     Filter = 'Copia de Seguridad|*.db'
     Options = [ofEnableSizing]
     Left = 304
-    Top = 280
+    Top = 240
   end
   object qexe: TZQuery
     Connection = f_main.conex
     Params = <>
     Left = 304
-    Top = 336
+    Top = 296
   end
   object locimg: TOpenPictureDialog
     Title = 'Localiza un archivo de imágen'

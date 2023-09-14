@@ -1,11 +1,11 @@
 object f_rub: Tf_rub
   Left = 411
-  Height = 505
+  Height = 497
   Top = 159
   Width = 513
   BorderIcons = [biSystemMenu]
   Caption = 'RUBROS'
-  ClientHeight = 505
+  ClientHeight = 497
   ClientWidth = 513
   OnActivate = FormActivate
   Position = poMainFormCenter
@@ -50,7 +50,7 @@ object f_rub: Tf_rub
     OnCellClick = listaCellClick
   end
   object b_nvo: TBitBtn
-    Left = 16
+    Left = 112
     Height = 40
     Top = 432
     Width = 96
@@ -68,7 +68,7 @@ object f_rub: Tf_rub
     TabOrder = 2
   end
   object b_mod: TBitBtn
-    Left = 112
+    Left = 208
     Height = 40
     Top = 432
     Width = 96
@@ -87,7 +87,7 @@ object f_rub: Tf_rub
     TabOrder = 3
   end
   object b_del: TBitBtn
-    Left = 208
+    Left = 304
     Height = 40
     Top = 432
     Width = 96
@@ -106,7 +106,7 @@ object f_rub: Tf_rub
     TabOrder = 4
   end
   object b_save: TBitBtn
-    Left = 304
+    Left = 400
     Height = 40
     Top = 432
     Width = 96
@@ -123,23 +123,6 @@ object f_rub: Tf_rub
     OnClick = b_saveClick
     ParentFont = False
     TabOrder = 5
-  end
-  object b_imp: TBitBtn
-    Left = 400
-    Height = 40
-    Top = 432
-    Width = 96
-    Caption = 'Imprimir'
-    Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
-    Font.Name = 'Segoe UI Semibold'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsBold]
-    Images = f_main.img_24
-    ImageIndex = 7
-    ParentFont = False
-    TabOrder = 6
   end
   object Label3: TLabel
     Left = 16

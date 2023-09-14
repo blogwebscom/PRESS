@@ -14,6 +14,7 @@ type
 
   Tf_bpre = class(TForm)
     b_loc: TBitBtn;
+    b_all: TBitBtn;
     dclien: TDataSource;
     dlista: TDataSource;
     fd: TJLabeledDateEdit;
@@ -28,6 +29,7 @@ type
     qexe: TZQuery;
     qlista: TZQuery;
     Shape1: TShape;
+    procedure b_allClick(Sender: TObject);
     procedure b_locClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure listaDblClick(Sender: TObject);
@@ -90,6 +92,13 @@ begin
       showmessage('Debe indicar la Fecha de Final de la búsqueda!');
   end else
     showmessage('Debe indicar la Fecha de Inicio de la búsqueda!');
+end;
+
+procedure Tf_bpre.b_allClick(Sender: TObject);
+begin
+  qlista.Close;
+  qlista.SQL.Text:= 'SELECT * FROM presupuestos ORDER BY fec DESC';
+  qlista.Open;
 end;
 
 end.
