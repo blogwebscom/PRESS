@@ -8,8 +8,8 @@ uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Menus,
   DBGrids, Buttons, DBCtrls, StdCtrls, JLabeledIntegerEdit, JLabeledFloatEdit,
   JLabeledDateEdit, ZDataset, ZConnection, prods, provs, cliens, rubros, add_pd,
-  add_cl, sis, busca_pres, LR_Class, LR_DBSet, UniqueInstance, Grids, LCLType,
-  Translations;
+  add_cl, sis, busca_pres, LR_Class, LR_DBSet, lr_e_pdf, UniqueInstance, Grids,
+  LCLType, Translations;
 
 type
 
@@ -118,6 +118,7 @@ type
     procedure listaPrepareCanvas(sender: TObject; DataCol: Integer; Column: TColumn; AState: TGridDrawState);
     procedure lpvSelect(Sender: TObject);
     procedure lst_prodSelect(Sender: TObject);
+    procedure lst_pvExit(Sender: TObject);
     procedure repoGetValue(const ParName: String; var ParValue: Variant);
     procedure tm_bpreClick(Sender: TObject);
     procedure tm_cliClick(Sender: TObject);
@@ -274,6 +275,11 @@ begin
     lpv.Enabled:= true;
     pfin.Value:= pve.Value;
   end;
+end;
+
+procedure Tf_main.lst_pvExit(Sender: TObject);
+begin
+  pfin.SetFocus;
 end;
 
 procedure Tf_main.tm_prodClick(Sender: TObject);
@@ -543,6 +549,12 @@ begin
   if parname = 'EW' then parvalue:= eweb;
   if parname = 'EI' then parvalue:= einfo;
   if parname = 'EL' then parvalue:= elogo;
+  {Variables para el Informe}
+  if parname = 'NP' then parvalue:= idpres.Value;
+  if parname = 'FP' then parvalue:= fec.Value;
+  if parname = 'EP' then parvalue:= pes.Text;
+  if parname = 'CP' then parvalue:= lst_cli.Text;
+  if parname = 'MP' then parvalue:= tp.Value;
 end;
 
 procedure Tf_main.b_locClick(Sender: TObject);
@@ -737,6 +749,8 @@ begin
     qtemp.Next;
   end;
   // OK
+  showmessage('qtemp: '+inttostr(qtemp.RecordCount)+#13+
+  'qlista: '+inttostr(qlista.RecordCount));
   showmessage(msje);
   // Des-Habilitaciones -----
   idpres.Enabled:= false; stk.Enabled:= false;

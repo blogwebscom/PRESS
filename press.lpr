@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, main, prods, provs, zcomponent, cliens, add_pd, rubros, add_cl, sis,
-  busca_pres
+  busca_pres, lazreportpdfexport
   { you can add units after this };
 
 {$R *.res}

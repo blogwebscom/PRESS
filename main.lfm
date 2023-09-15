@@ -5,7 +5,7 @@ object f_main: Tf_main
   Width = 1177
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 140923'
+  Caption = 'PRESS - Sistema para Presupuestos by dacom.com.ar | build 150923'
   ClientHeight = 640
   ClientWidth = 1177
   Icon.Data = {
@@ -1923,6 +1923,7 @@ object f_main: Tf_main
     ListFieldIndex = 0
     ListSource = dprovs
     LookupCache = False
+    OnExit = lst_pvExit
     ParentFont = False
     TabOrder = 11
   end
@@ -2089,7 +2090,7 @@ object f_main: Tf_main
     EditLabel.ParentColor = False
     Enabled = False
     Font.CharSet = ANSI_CHARSET
-    Font.Color = clBlue
+    Font.Color = clGreen
     Font.Height = -16
     Font.Name = 'Segoe UI Semibold'
     Font.Pitch = fpVariable
