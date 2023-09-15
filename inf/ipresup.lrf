@@ -7,7 +7,7 @@
     <KeyWords Value=""/>
     <Comments Value=""/>
     <ReportCreateDate Value="1899-12-30 00:00:00"/>
-    <ReportLastChange Value="2023-09-14 10:50:55"/>
+    <ReportLastChange Value="2023-09-15 09:58:16"/>
     <ReportVersionBuild Value=""/>
     <ReportVersionMajor Value=""/>
     <ReportVersionMinor Value=""/>
@@ -435,7 +435,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="PRESUPUESTO Nº [qlista.id_pres]&#xD;&#xA;"/>
+            <Memo Value="PRESUPUESTO Nº [NP]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -995,7 +995,7 @@
           <Data>
             <Format Value="33816620"/>
             <FormatStr Value="dd/mm/yyyy"/>
-            <Memo Value="Fecha: [qlista.fec]&#xD;&#xA;"/>
+            <Memo Value="Fecha: [FP]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1051,7 +1051,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="Cliente: [qlista.ncli]&#xD;&#xA;"/>
+            <Memo Value="Cliente: [CP]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1107,7 +1107,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="Estado: [qlista.estado]&#xD;&#xA;"/>
+            <Memo Value="Estado: [EP]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1163,7 +1163,7 @@
           <Data>
             <Format Value="16974380"/>
             <FormatStr Value=""/>
-            <Memo Value="Monto Total: $ [qlista.monto]&#xD;&#xA;"/>
+            <Memo Value="Monto Total: $ [MP]&#xD;&#xA;"/>
             <Script Value=""/>
             <GapX Value="0"/>
             <GapY Value="0"/>
@@ -1926,7 +1926,7 @@
         <ObjectCount Value="36"/>
       </Page1>
       <FVal>
-        <Count Value="7"/>
+        <Count Value="12"/>
         <Objects1>
           <Typ Value="0"/>
           <OtherKind Value="0"/>
@@ -1976,8 +1976,43 @@
           <Field Value=""/>
           <Item Value="EL"/>
         </Objects7>
+        <Objects8>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="NP"/>
+        </Objects8>
+        <Objects9>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="FP"/>
+        </Objects9>
+        <Objects10>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="EP"/>
+        </Objects10>
+        <Objects11>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="CP"/>
+        </Objects11>
+        <Objects12>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="MP"/>
+        </Objects12>
       </FVal>
-      <ParentVars Value="DATOS COMPRA&#xD;&#xA; EN&#xD;&#xA; ED&#xD;&#xA; ET&#xD;&#xA; EM&#xD;&#xA; EW&#xD;&#xA; EI&#xD;&#xA; EL&#xD;&#xA;"/>
+      <ParentVars Value="DATOS COMPRA&#xD;&#xA; EN&#xD;&#xA; ED&#xD;&#xA; ET&#xD;&#xA; EM&#xD;&#xA; EW&#xD;&#xA; EI&#xD;&#xA; EL&#xD;&#xA; NP&#xD;&#xA; FP&#xD;&#xA; EP&#xD;&#xA; CP&#xD;&#xA; MP&#xD;&#xA;"/>
     </Pages>
     <DetailReports>
       <Count Value="0"/>
