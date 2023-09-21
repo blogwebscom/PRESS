@@ -145,6 +145,7 @@ type
     procedure limpia();
     procedure add_prod();
     procedure loc_pres();
+    procedure datos_inf();
     // -------------------------> se pueden crear procesos para HAB y DESHAB componenetes!
     var
       enom, edire, etel, email, eweb, einfo, elogo: string; {varibles globales de negocio}
@@ -182,20 +183,25 @@ begin
     DefaultFormatSettings.ThousandSeparator:= '.';
     // Variables
     dup:= 'N';
-    qexe.Close;
-    qexe.SQL.Text:= 'SELECT * FROM sistema';
-    qexe.Open;
-    enom:= qexe.FieldByName('enom').Text;
-    edire:= qexe.FieldByName('edire').Text;
-    etel:= qexe.FieldByName('etel').Text;
-    email:= qexe.FieldByName('email').Text;
-    eweb:= qexe.FieldByName('eweb').Text;
-    einfo:= qexe.FieldByName('einfo').Text;
-    elogo:= qexe.FieldByName('elogo').Text;
-    {Carga de Datos // Aquí no en el inicio, solo pruebas}
+    // Datos para informes
+    datos_inf();
     {carga_cli(); carga_pd(); carga_pv();}
     b_nvo.SetFocus;
   end;
+end;
+
+procedure Tf_main.datos_inf();
+begin
+  qexe.Close;
+  qexe.SQL.Text:= 'SELECT * FROM sistema';
+  qexe.Open;
+  enom:= qexe.FieldByName('enom').Text;
+  edire:= qexe.FieldByName('edire').Text;
+  etel:= qexe.FieldByName('etel').Text;
+  email:= qexe.FieldByName('email').Text;
+  eweb:= qexe.FieldByName('eweb').Text;
+  einfo:= qexe.FieldByName('einfo').Text;
+  elogo:= qexe.FieldByName('elogo').Text;
 end;
 
 procedure Tf_main.FormCreate(Sender: TObject);
@@ -294,6 +300,9 @@ begin
   f_cli:= Tf_cli.Create(Self);
   f_cli.Caption:= 'Viendo Clientes';
   f_cli.b_nvo.Caption:= 'Seleccionar';
+  f_cli.b_nvo.Width:= 110;
+  f_cli.b_nvo.Left:= 426;
+  f_cli.b_nvo.Spacing:= 0;
   f_cli.b_mod.Enabled:= false;
   f_cli.b_del.Enabled:= false;
   f_cli.b_imp.Enabled:= false;
@@ -686,85 +695,106 @@ var
   msje: string;
 begin
   // Control Vacios?
-  {---------------------------------------------Guarda el Presupuesto}
-  qexe.Close;
-  if OP = 'N' then // Nuevo Presupuesto
+  if fec.Value = 0 then
   begin
-    qexe.SQL.Text:= 'INSERT INTO PRESUPUESTOS(fec,ncli,monto,estado) VALUES(:FE,:NC,:MO,:ES)';
-    msje:= 'Nuevo Presupuesto Nº '+inttostr(idpres.Value)+' Guardado Correctamente!';
-  end else begin   // Modifica Presupuesto
-    qexe.SQL.Text:= 'UPDATE PRESUPUESTOS SET fec=:FE,ncli=:NC,monto=:MO,estado=:ES '+
-    'WHERE id_pres=:IP';
-    qexe.ParamByName('IP').AsInteger:= idpres.Value;
-    msje:= 'Presupuesto Nº '+inttostr(idpres.Value)+' Modificado Correctamente!';
-  end;
-  // Parametros
-  qexe.ParamByName('FE').AsDate:= fec.Value;
-  qexe.ParamByName('NC').AsString:= lst_cli.Text;
-  qexe.ParamByName('MO').AsFloat:= tp.Value;
-  qexe.ParamByName('ES').AsString:= pes.Text;
-  qexe.ExecSQL;
-  {---------------------------------------------Guarda el DETALLE}
-  qexe.Close;
-  if OP = 'E' then // Modificando Presp. el detalle se borra y se vuelve a cargar
-  begin
-    qexe.SQL.Text:= 'DELETE FROM PRESDETALLE WHERE id_pres=:ID';
-    qexe.ParamByName('IP').AsInteger:= idpres.Value;
-    qexe.ExecSQL;
-  end;
-  // Insertamos lista de productos
-  qtemp.First;
-  while not qtemp.EOF do
-  begin
-    qexe.Close;
-    qexe.SQL.Text:= 'INSERT INTO PRESDETALLE(id_pres,id_pd,pdnom,pvnom,pc,can,pv,sub,desc,total) '+
-    'VALUES(:ID,:IP,:PN,:PR,:PC,:CA,:PV,:SB,:DE,:TO)';
-    // Parametros
-    qexe.ParamByName('ID').AsInteger:= qtemp.FieldByName('id_pres').Value;
-    qexe.ParamByName('IP').AsString:= qtemp.FieldByName('id_pd').Value;
-    qexe.ParamByName('PN').AsString:= qtemp.FieldByName('pdnom').Text;
-    qexe.ParamByName('PR').AsString:= qtemp.FieldByName('pvnom').Text;
-    qexe.ParamByName('PC').AsFloat:= qtemp.FieldByName('pc').Value;
-    qexe.ParamByName('CA').AsInteger:= qtemp.FieldByName('can').Value;
-    qexe.ParamByName('PV').AsFloat:= qtemp.FieldByName('pv').Value;
-    qexe.ParamByName('SB').AsFloat:= qtemp.FieldByName('sub').Value;
-    qexe.ParamByName('DE').AsFloat:= qtemp.FieldByName('desc').Value;
-    qexe.ParamByName('TO').AsFloat:= qtemp.FieldByName('total').Value;
-    qexe.ExecSQL;
-    if OP = 'E' then // Modificando Presp. el stock regresa
+    MessageDlg('Datos Obligatorio!','La Fecha no puede estar Vacia!',mtError,[mbOk],0);
+    fec.SetFocus;
+  end else begin
+    if lst_cli.Text = '' then
     begin
-      qexe.Close;
-      qexe.SQL.Text:= 'UPDATE productos SET stock=stock+:RES WHERE id_pd=:IP';
-      qexe.ParamByName('IP').AsInteger:= qtemp.FieldByName('id_pd').Value;
-      qexe.ParamByName('RES').AsInteger:= qtemp.FieldByName('can').Value;
-      qexe.ExecSQL;
-    end;
-    // Restamos el Stock de producto
-    qexe.Close;
-    qexe.SQL.Text:= 'UPDATE PRODUCTOS SET stock=stock-:RES WHERE id_pd=:IP';
-    qexe.ParamByName('IP').AsString:= qtemp.FieldByName('id_pd').Value;
-    qexe.ParamByName('RES').AsInteger:= qtemp.FieldByName('can').Value;
-    qexe.ExecSQL;
-    // ...
-    qtemp.Next;
-  end;
-  // OK
-  showmessage('qtemp: '+inttostr(qtemp.RecordCount)+#13+
-  'qlista: '+inttostr(qlista.RecordCount));
-  showmessage(msje);
-  // Des-Habilitaciones -----
-  idpres.Enabled:= false; stk.Enabled:= false;
-  fec.Enabled:= false; fec.Button.Enabled:= false;
-  lst_cli.Enabled:= false; b_bc.Enabled:= false; b_nc.Enabled:= false;
-  idp.Enabled:= false; b_bp.Enabled:= false; b_quita.Enabled:= false;
-  cbar.Enabled:= false; lst_prod.Enabled:= false;
-  lpv.Enabled:= false; pco.Enabled:= false;
-  pve.Enabled:= false; pfin.Enabled:= false; can.Enabled:= false;
-  sub.Enabled:= false; pde.Enabled:= false; pto.Enabled:= false;
-  lst_pv.Enabled:= false; pes.Enabled:= false;
-  b_add.Enabled:= false; b_np.Enabled:= false; b_loc.Enabled:= true;
-  b_nvo.Enabled:= true; b_mod.Enabled:= true; b_del.Enabled:= true;
-  b_save.Enabled:= false; b_imp.Enabled:= true;
+      MessageDlg('Datos Obligatorio!','Se debe Seleccionar un Cliente!'+#13+
+      'Si no se encuentra cárguelo en la Base de Datos.',mtError,[mbOk],0);
+      lst_cli.SetFocus;
+    end else begin
+      if qtemp.IsEmpty then
+      begin
+        MessageDlg('Datos Obligatorio!','El Presupuesto se encuentra Vacio!'+#13+
+        'Cargue algún Producto para poder guardar.',mtError,[mbOk],0);
+        idp.SetFocus;
+      end else begin
+        {--------------------------------------------- OK, Guarda el Presupuesto}
+        qexe.Close;
+        if OP = 'N' then // Nuevo Presupuesto
+        begin
+          qexe.SQL.Text:= 'INSERT INTO PRESUPUESTOS(fec,ncli,monto,estado) VALUES(:FE,:NC,:MO,:ES)';
+          msje:= 'Nuevo Presupuesto Nº '+inttostr(idpres.Value)+' Guardado Correctamente!';
+        end else begin   // Modifica Presupuesto
+          qexe.SQL.Text:= 'UPDATE PRESUPUESTOS SET fec=:FE,ncli=:NC,monto=:MO,estado=:ES '+
+          'WHERE id_pres=:IP';
+          qexe.ParamByName('IP').AsInteger:= idpres.Value;
+          msje:= 'Presupuesto Nº '+inttostr(idpres.Value)+' Modificado Correctamente!';
+        end;
+        // Parametros
+        qexe.ParamByName('FE').AsDate:= fec.Value;
+        qexe.ParamByName('NC').AsString:= lst_cli.Text;
+        qexe.ParamByName('MO').AsFloat:= tp.Value;
+        qexe.ParamByName('ES').AsString:= pes.Text;
+        qexe.ExecSQL;
+        {---------------------------------------------Guarda el DETALLE}
+        qexe.Close;
+        if OP = 'E' then // Modificando Presp. el detalle se borra y se vuelve a cargar
+        begin
+          qexe.SQL.Text:= 'DELETE FROM PRESDETALLE WHERE id_pres=:ID';
+          qexe.ParamByName('IP').AsInteger:= idpres.Value;
+          qexe.ExecSQL;
+        end;
+        // Insertamos lista de productos
+        qtemp.First;
+        while not qtemp.EOF do
+        begin
+          qexe.Close;
+          qexe.SQL.Text:= 'INSERT INTO PRESDETALLE(id_pres,id_pd,pdnom,pvnom,pc,can,pv,sub,desc,total) '+
+          'VALUES(:ID,:IP,:PN,:PR,:PC,:CA,:PV,:SB,:DE,:TO)';
+          // Parametros
+          qexe.ParamByName('ID').AsInteger:= qtemp.FieldByName('id_pres').Value;
+          qexe.ParamByName('IP').AsString:= qtemp.FieldByName('id_pd').Value;
+          qexe.ParamByName('PN').AsString:= qtemp.FieldByName('pdnom').Text;
+          qexe.ParamByName('PR').AsString:= qtemp.FieldByName('pvnom').Text;
+          qexe.ParamByName('PC').AsFloat:= qtemp.FieldByName('pc').Value;
+          qexe.ParamByName('CA').AsInteger:= qtemp.FieldByName('can').Value;
+          qexe.ParamByName('PV').AsFloat:= qtemp.FieldByName('pv').Value;
+          qexe.ParamByName('SB').AsFloat:= qtemp.FieldByName('sub').Value;
+          qexe.ParamByName('DE').AsFloat:= qtemp.FieldByName('desc').Value;
+          qexe.ParamByName('TO').AsFloat:= qtemp.FieldByName('total').Value;
+          qexe.ExecSQL;
+          if OP = 'E' then // Modificando Presp. el stock regresa
+          begin
+            qexe.Close;
+            qexe.SQL.Text:= 'UPDATE productos SET stock=stock+:RES WHERE id_pd=:IP';
+            qexe.ParamByName('IP').AsInteger:= qtemp.FieldByName('id_pd').Value;
+            qexe.ParamByName('RES').AsInteger:= qtemp.FieldByName('can').Value;
+            qexe.ExecSQL;
+          end;
+          // Restamos el Stock de producto
+          qexe.Close;
+          qexe.SQL.Text:= 'UPDATE PRODUCTOS SET stock=stock-:RES WHERE id_pd=:IP';
+          qexe.ParamByName('IP').AsString:= qtemp.FieldByName('id_pd').Value;
+          qexe.ParamByName('RES').AsInteger:= qtemp.FieldByName('can').Value;
+          qexe.ExecSQL;
+          // ...
+          qtemp.Next;
+        end;
+        // OK
+        showmessage('qtemp: '+inttostr(qtemp.RecordCount)+#13+
+        'qlista: '+inttostr(qlista.RecordCount));
+        showmessage(msje);
+        // Des-Habilitaciones -----
+        idpres.Enabled:= false; stk.Enabled:= false;
+        fec.Enabled:= false; fec.Button.Enabled:= false;
+        lst_cli.Enabled:= false; b_bc.Enabled:= false; b_nc.Enabled:= false;
+        idp.Enabled:= false; b_bp.Enabled:= false; b_quita.Enabled:= false;
+        cbar.Enabled:= false; lst_prod.Enabled:= false;
+        lpv.Enabled:= false; pco.Enabled:= false;
+        pve.Enabled:= false; pfin.Enabled:= false; can.Enabled:= false;
+        sub.Enabled:= false; pde.Enabled:= false; pto.Enabled:= false;
+        lst_pv.Enabled:= false; pes.Enabled:= false;
+        b_add.Enabled:= false; b_np.Enabled:= false; b_loc.Enabled:= true;
+        b_nvo.Enabled:= true; b_mod.Enabled:= true; b_del.Enabled:= true;
+        b_save.Enabled:= false; b_imp.Enabled:= true;
+        {FIN!}
+      end;  // productos
+    end;    // cliente
+  end;      // fecha
 end;
 
 procedure Tf_main.canExit(Sender: TObject);

@@ -26,7 +26,6 @@ object f_cli: Tf_cli
     ImageIndex = 7
     OnClick = b_nvoClick
     ParentFont = False
-    Spacing = 6
     TabOrder = 0
   end
   object b_mod: TBitBtn

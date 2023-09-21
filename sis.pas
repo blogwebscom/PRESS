@@ -158,6 +158,8 @@ begin
   qexe.ParamByName('LO').AsString:= 'sin_logo';
   qexe.ParamByName('IN').AsString:= trim(ea.Text);
   qexe.ExecSQL;
+  // Recargamos en main
+  f_main.datos_inf();
   showmessage('OK, lo Datos fueron modificados con éxito.');
   {Deshabilitaciones}
   for i:= 1 to  ComponentCount - 1 do
