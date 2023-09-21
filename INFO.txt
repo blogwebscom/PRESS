@@ -24,3 +24,11 @@ Revision 130923
 Revision 140923
 - se agrega informes impresion de Presupuesto y listado de Productos
 - se agrega boton "ver todos" en el buscador de presupuestos
+
+Revision 150923
+- se corrigen errores menores en informes.
+
+Revision 210923
+- se agrega edicion de datos del negocio para impresion de informes.
+- se agregan mensajes para datos obligatorios en Guardar presupuesto.
+- fix de errores en seleccion de clientes
