@@ -36,3 +36,4 @@ Revision 210923
 Revision 220923
 - fix en editar producto, ahora carga el rubro.
 - fix de guadardo de presupuesto.
+- algunas correcciones menores de diseño.
