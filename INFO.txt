@@ -32,3 +32,7 @@ Revision 210923
 - se agrega edicion de datos del negocio para impresion de informes.
 - se agregan mensajes para datos obligatorios en Guardar presupuesto.
 - fix de errores en seleccion de clientes
+
+Revision 220923
+- fix en editar producto, ahora carga el rubro.
+- fix de guadardo de presupuesto.

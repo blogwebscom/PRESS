@@ -181,17 +181,17 @@ begin
   begin
     // PRESUPUESTOS
     qexe.Close;
-    qexe.SQL.Text:= 'DELETE FROM presupuestos';
+    qexe.SQL.Text:= 'DELETE FROM PRESUPUESTOS';
     qexe.ExecSQL;
     qexe.Close;
-    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''presupuestos''';
+    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''PRESUPUESTOS''';
     qexe.ExecSQL;
     // PRESUPUESTOS
     qexe.Close;
-    qexe.SQL.Text:= 'DELETE FROM presdetalle';
+    qexe.SQL.Text:= 'DELETE FROM PRESDETALLE';
     qexe.ExecSQL;
     qexe.Close;
-    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''presdetalle''';
+    qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''PRESDETALLE''';
     qexe.ExecSQL;
     vok.Caption:= 'OK';
   end;
@@ -207,10 +207,10 @@ begin
     if ck_pd.Checked then
     begin
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM productos';
+      qexe.SQL.Text:= 'DELETE FROM PRODUCTOS';
       qexe.ExecSQL;
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''productos''';
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''PRODUCTOS''';
       qexe.ExecSQL;
       tpd.Caption:= 'OK';
     end;
@@ -218,10 +218,10 @@ begin
     if ck_cl.Checked then
     begin
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM clientes';
+      qexe.SQL.Text:= 'DELETE FROM CLIENTES';
       qexe.ExecSQL;
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''clientes''';
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''CLIENTES''';
       qexe.ExecSQL;
       tcl.Caption:= 'OK';
     end;
@@ -229,10 +229,10 @@ begin
     if ck_pv.Checked then
     begin
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM proveedores';
+      qexe.SQL.Text:= 'DELETE FROM PROVEEDORES';
       qexe.ExecSQL;
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''proveedores''';
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''PROVEEDORES''';
       qexe.ExecSQL;
       tpv.Caption:= 'OK';
     end;
@@ -240,10 +240,10 @@ begin
     if ck_ru.Checked then
     begin
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM rubros';
+      qexe.SQL.Text:= 'DELETE FROM RUBROS';
       qexe.ExecSQL;
       qexe.Close;
-      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''rubros''';
+      qexe.SQL.Text:= 'DELETE FROM SQLITE_SEQUENCE WHERE name=''RUBROS''';
       qexe.ExecSQL;
       tru.Caption:= 'OK';
     end;

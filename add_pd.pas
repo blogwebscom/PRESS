@@ -66,6 +66,8 @@ begin
   carga_rub();
   cb.SetFocus;
   OK:= 'N';
+  // Esto ocurre cuando estamos editando
+  if idr.Value <> 0 then lst_rub.KeyValue:= idr.Value;
 end;
 
 procedure Tf_addp.lst_rubSelect(Sender: TObject);

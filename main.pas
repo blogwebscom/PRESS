@@ -775,8 +775,6 @@ begin
           qtemp.Next;
         end;
         // OK
-        showmessage('qtemp: '+inttostr(qtemp.RecordCount)+#13+
-        'qlista: '+inttostr(qlista.RecordCount));
         showmessage(msje);
         // Des-Habilitaciones -----
         idpres.Enabled:= false; stk.Enabled:= false;
