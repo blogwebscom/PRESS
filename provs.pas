@@ -101,38 +101,42 @@ procedure Tf_prov.b_saveClick(Sender: TObject);
 var
   nprov, msje: string; // localiza por nombre? extra: datos extra
 begin
-  nprov:= trim(uppercase(pvn.Text));
-  qexe.Close;
-  if oper = 'N' then
+  if pvn.Text <> '' then
   begin
-    qexe.SQL.Text:= 'INSERT INTO PROVEEDORES(pvnom,dire,tel,email,web,extra) '+
-    'VALUES(:PN,:DI,:TE,:EM,:WE,:PE)';
-    msje:= 'Nuevo Proveedor Cargado Correctamente!';
-  end else begin
-    qexe.SQL.Text:= 'UPDATE PROVEEDORES SET pvnom=:PN,dire=:DI,tel=:TE,email=:EM,'+
-    'web=:WE,extra=:PE WHERE id_pv=:IP';
-    qexe.ParamByName('IP').AsInteger:= qlista.FieldByName('id_pv').Value;
-    msje:= 'Proveedor Modificado Correctamente!';
-  end;
-  // Parametros --------------
-  qexe.ParamByName('PN').AsString:= nprov;
-  qexe.ParamByName('DI').AsString:= trim(uppercase(dir.Text));
-  qexe.ParamByName('TE').AsString:= trim(uppercase(tel.Text));
-  qexe.ParamByName('EM').AsString:= trim(lowercase(em.Text));
-  qexe.ParamByName('WE').AsString:= trim(lowercase(web.Text));
-  qexe.ParamByName('PE').AsString:= trim(extra.Text);
-  qexe.ExecSQL;
-  lista_pv();
-  qlista.Locate('pvnom',nprov,[]);
-  showmessage(msje);
-  // Limpia
-  pvn.Text:= ''; tel.Text:= ''; dir.Text:= '';
-  em.Text:= ''; web.Text:= ''; extra.Text:= '';
-  // Hab.
-  pvn.Enabled:= false; tel.Enabled:= false; dir.Enabled:= false;
-  em.Enabled:= false; web.Enabled:= false; lista.Enabled:= true;
-  b_nvo.Enabled:= true; b_save.Enabled:= false; extra.Enabled:= false;
-  b_nvo.SetFocus;
+    nprov:= trim(uppercase(pvn.Text));
+    qexe.Close;
+    if oper = 'N' then
+    begin
+      qexe.SQL.Text:= 'INSERT INTO PROVEEDORES(pvnom,dire,tel,email,web,extra) '+
+      'VALUES(:PN,:DI,:TE,:EM,:WE,:PE)';
+      msje:= 'Nuevo Proveedor Cargado Correctamente!';
+    end else begin
+      qexe.SQL.Text:= 'UPDATE PROVEEDORES SET pvnom=:PN,dire=:DI,tel=:TE,email=:EM,'+
+      'web=:WE,extra=:PE WHERE id_pv=:IP';
+      qexe.ParamByName('IP').AsInteger:= qlista.FieldByName('id_pv').Value;
+      msje:= 'Proveedor Modificado Correctamente!';
+    end;
+    // Parametros --------------
+    qexe.ParamByName('PN').AsString:= nprov;
+    qexe.ParamByName('DI').AsString:= trim(uppercase(dir.Text));
+    qexe.ParamByName('TE').AsString:= trim(uppercase(tel.Text));
+    qexe.ParamByName('EM').AsString:= trim(lowercase(em.Text));
+    qexe.ParamByName('WE').AsString:= trim(lowercase(web.Text));
+    qexe.ParamByName('PE').AsString:= trim(extra.Text);
+    qexe.ExecSQL;
+    lista_pv();
+    qlista.Locate('pvnom',nprov,[]);
+    showmessage(msje);
+    // Limpia
+    pvn.Text:= ''; tel.Text:= ''; dir.Text:= '';
+    em.Text:= ''; web.Text:= ''; extra.Text:= '';
+    // Hab.
+    pvn.Enabled:= false; tel.Enabled:= false; dir.Enabled:= false;
+    em.Enabled:= false; web.Enabled:= false; lista.Enabled:= true;
+    b_nvo.Enabled:= true; b_save.Enabled:= false; extra.Enabled:= false;
+    b_nvo.SetFocus;
+  end else
+    showmessage('El nombre del Proveedor no puede estar Vacio!');
 end;
 
 procedure Tf_prov.b_delClick(Sender: TObject);

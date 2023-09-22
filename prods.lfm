@@ -15,12 +15,14 @@ object f_prod: Tf_prod
     Height = 65
     Top = 8
     Width = 1088
+    Anchors = [akTop, akLeft, akRight]
   end
   object b_nvo: TBitBtn
     Left = 712
     Height = 40
     Top = 496
     Width = 96
+    Anchors = [akRight, akBottom]
     Caption = 'Nuevo'
     Font.CharSet = ANSI_CHARSET
     Font.Height = -13
@@ -40,6 +42,7 @@ object f_prod: Tf_prod
     Height = 40
     Top = 496
     Width = 96
+    Anchors = [akRight, akBottom]
     Caption = 'Editar'
     Enabled = False
     Font.CharSet = ANSI_CHARSET
@@ -59,6 +62,7 @@ object f_prod: Tf_prod
     Height = 40
     Top = 496
     Width = 96
+    Anchors = [akRight, akBottom]
     Caption = 'Borrar'
     Enabled = False
     Font.CharSet = ANSI_CHARSET
@@ -79,6 +83,7 @@ object f_prod: Tf_prod
     Height = 40
     Top = 496
     Width = 96
+    Anchors = [akRight, akBottom]
     Caption = 'Imprimir'
     Enabled = False
     Font.CharSet = ANSI_CHARSET
@@ -99,6 +104,7 @@ object f_prod: Tf_prod
     Top = 100
     Width = 1088
     AlternateColor = 16381168
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clWindow
     Columns = <    
       item

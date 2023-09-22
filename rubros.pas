@@ -102,26 +102,30 @@ procedure Tf_rub.b_saveClick(Sender: TObject);
 var
   nrub: string;
 begin
-  nrub:= trim(uppercase(rnom.Text));
-  qexe.Close;
-  if oper = 'N' then
-    qexe.SQL.Text:= 'INSERT INTO RUBROS(rnom) VALUES(:NR)'
-  else begin
-    qexe.SQL.Text:= 'UPDATE RUBROS SET rnom=:NR WHERE id_rub=:IR';
-    qexe.ParamByName('IR').AsInteger:= qlista.FieldByName('id_rub').Value;
-  end;
-  // Parametros --------------
-  qexe.ParamByName('NR').AsString:= nrub;
-  qexe.ExecSQL;
-  carga_rub();
-  qlista.Locate('rnom',nrub,[]);
-  // Hab. Limpia
-  rnom.Text:= ''; rnom.Enabled:= false;
-  // Hab.
-  lista.Enabled:= true;
-  b_nvo.Enabled:= true;
-  b_save.Enabled:= false;
-  b_nvo.SetFocus;
+  if rnom.Text <> '' then
+  begin
+    nrub:= trim(uppercase(rnom.Text));
+    qexe.Close;
+    if oper = 'N' then
+      qexe.SQL.Text:= 'INSERT INTO RUBROS(rnom) VALUES(:NR)'
+    else begin
+      qexe.SQL.Text:= 'UPDATE RUBROS SET rnom=:NR WHERE id_rub=:IR';
+      qexe.ParamByName('IR').AsInteger:= qlista.FieldByName('id_rub').Value;
+    end;
+    // Parametros --------------
+    qexe.ParamByName('NR').AsString:= nrub;
+    qexe.ExecSQL;
+    carga_rub();
+    qlista.Locate('rnom',nrub,[]);
+    // Hab. Limpia
+    rnom.Text:= ''; rnom.Enabled:= false;
+    // Hab.
+    lista.Enabled:= true;
+    b_nvo.Enabled:= true;
+    b_save.Enabled:= false;
+    b_nvo.SetFocus;
+  end else
+    showmessage('El nombre del Rubro no puede estar Vacio!');
 end;
 
 procedure Tf_rub.b_delClick(Sender: TObject);
